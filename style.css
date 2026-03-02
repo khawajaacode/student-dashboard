@@ -1,11 +1,28 @@
+:root {
+    --bg-color: #f4f6f8;
+    --text-color: #1f2937;
+    --card-bg: #ffffff;
+    --nav-bg: #2c3e50;
+    --footer-bg: #eaf0f6;
+}
+
+body.dark-mode {
+    --bg-color: #111827;
+    --text-color: #f3f4f6;
+    --card-bg: #1f2937;
+    --nav-bg: #0f172a;
+    --footer-bg: #1e293b;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    background-color: #f4f6f8;
+    background-color: var(--bg-color);
+    color: var(--text-color);
 }
 
 header {
-    background-color: #2c3e50;
+    background-color: var(--nav-bg);
     color: white;
     padding: 20px;
     text-align: center;
@@ -38,7 +55,7 @@ main {
 }
 
 .feature-card {
-    background-color: white;
+    background-color: var(--card-bg);
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(44, 62, 80, 0.1);
     padding: 22px;
@@ -57,7 +74,7 @@ main {
 }
 
 footer {
-    background-color: #2c3e50;
+    background-color: var(--footer-bg);
     color: white;
     text-align: center;
     padding: 15px;
@@ -183,4 +200,22 @@ footer {
     .footer-links ul {
         justify-content: flex-start;
     }
+}
+
+.theme-toggle {
+    background: none;
+    border: 1px solid white;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.theme-toggle:hover {
+    opacity: 0.8;
+}
+
+body.dark-mode .theme-toggle {
+    border-color: #f3f4f6;
 }
