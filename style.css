@@ -19,12 +19,13 @@ body {
     margin: 0;
     background-color: var(--bg-color);
     color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 header {
     background-color: var(--nav-bg);
     color: white;
-    padding: 20px;
+    padding: 40px 20px;
     text-align: center;
 }
 
@@ -32,7 +33,7 @@ main {
     padding: 40px;
     text-align: center;
     max-width: 1100px;
-    margin: 0 auto 90px;
+    margin: 40px auto 90px;
 }
 
 .welcome {
@@ -40,12 +41,15 @@ main {
 }
 
 .welcome h2 {
+    font-size: 28px;
+    letter-spacing: -0.3px;
     margin-bottom: 8px;
 }
 
 .welcome p {
     margin-top: 0;
     color: #4b5563;
+    font-size: 16px;
 }
 
 .features {
@@ -60,11 +64,18 @@ main {
     box-shadow: 0 8px 20px rgba(44, 62, 80, 0.1);
     padding: 22px;
     text-align: left;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(44, 62, 80, 0.2);
 }
 
 .feature-card h3 {
     margin: 0 0 10px;
-    color: #1f2937;
+    font-size: 18px;
+    letter-spacing: -0.2px;
 }
 
 .feature-card p {
@@ -86,7 +97,8 @@ footer {
 /* NAVBAR */
 
 .navbar {
-    background-color: #2c3e50;
+    background-color: var(--nav-bg);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
     color: white;
     display: flex;
     justify-content: space-between;
@@ -114,6 +126,25 @@ footer {
 
 .nav-links li a:hover {
     color: #1abc9c;
+}
+
+.nav-links li a {
+    position: relative;
+}
+
+.nav-links li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background: #1abc9c;
+    transition: width 0.25s ease;
+}
+
+.nav-links li a:hover::after {
+    width: 100%;
 }
 
 /* FOOTER ENHANCEMENT */
