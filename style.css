@@ -325,3 +325,26 @@ body.dark-mode .theme-toggle {
 .delete-btn:hover {
     background-color: #dc2626;
 }
+/* task checkbox + completed styling */
+.task-checkbox {
+    margin-right: 12px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #2563eb; 
+}
+
+#taskList li.completed span {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+
+#taskList li span {
+    flex: 1;
+}
+
+
+#taskList li button.delete-btn {
+    margin-left: 12px;
+}
