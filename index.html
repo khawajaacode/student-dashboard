@@ -61,6 +61,13 @@
 
             <button id="addTaskBtn">Add Task</button>
         </div>
+        <div class="task-filters" role="group" aria-label="Task filters">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="pending">Pending</button>
+    <button class="filter-btn" data-filter="completed">Completed</button>
+</div>
+
+<p id="emptyMsg" class="empty-msg">No tasks here. Add one above!</p>
 
         <ul id="taskList"></ul>
     </section>

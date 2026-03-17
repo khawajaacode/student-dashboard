@@ -17,6 +17,10 @@ toggleBtn.addEventListener("click", () => {
 const taskInput = document.getElementById("taskInput");
 const addTaskBtn = document.getElementById("addTaskBtn");
 const taskList = document.getElementById("taskList");
+const emptyMsg   = document.getElementById("emptyMsg");
+const filterBtns = document.querySelectorAll(".filter-btn");
+
+let activeFilter = "all";
 
 
 /* CREATE TASK ELEMENT (now supports completed state) */
@@ -51,6 +55,7 @@ function createTask(taskText, completed = false) {
             taskList.insertBefore(li, taskList.firstChild);
         }
         saveTasks();
+        applyFilter(activeFilter);
     });
 
     deleteBtn.addEventListener("click", () => {
@@ -67,6 +72,7 @@ function createTask(taskText, completed = false) {
     if (completed) li.classList.add("completed");
 
     taskList.appendChild(li);
+
 }
 
 
@@ -94,6 +100,8 @@ function loadTasks() {
     storedTasks
         .filter(t => t.completed)
         .forEach(t => createTask(t.text, true));
+
+        applyFilter(activeFilter);
 }
 
 loadTasks();
@@ -118,4 +126,32 @@ taskInput.addEventListener("keypress", (event) => {
     if (event.key === "Enter") {
         addTaskBtn.click();
     }
+});
+
+function updateEmptyMessage() {
+    const visibleTasks = taskList.querySelectorAll("li:not(.hidden)");
+    emptyMsg.style.display = visibleTasks.length === 0 ? "block" : "none";
+}
+
+function applyFilter(filter) {
+    taskList.querySelectorAll("li").forEach(li => {
+        const isCompleted = li.classList.contains("completed");
+        if (filter === "all") {
+            li.classList.remove("hidden");
+        } else if (filter === "completed") {
+            isCompleted ? li.classList.remove("hidden") : li.classList.add("hidden");
+        } else if (filter === "pending") {
+            !isCompleted ? li.classList.remove("hidden") : li.classList.add("hidden");
+        }
+    });
+    updateEmptyMessage();
+}
+
+filterBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+        filterBtns.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        activeFilter = btn.dataset.filter;
+        applyFilter(activeFilter);
+    });
 });

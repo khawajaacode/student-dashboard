@@ -150,8 +150,8 @@ main {
 .site-footer {
     position: static;
     width: auto;
-    background-color: #eaf0f6;
-    color: #1f2937;
+    background-color: var(--footer-bg);
+    color: var(--text-color);
     padding: 34px 40px 18px;
     margin-top: 32px;
     border-top: 1px solid #dbe3ec;
@@ -182,7 +182,7 @@ main {
 .footer-links h4 {
     margin: 0 0 10px;
     font-size: 0.95rem;
-    color: #374151;
+    color: var(--text-color);
 }
 
 .footer-links ul {
@@ -196,7 +196,7 @@ main {
 }
 
 .footer-links a {
-    color: #1f2937;
+    color: var(--text-color);
     text-decoration: none;
     font-size: 0.92rem;
     transition: color 0.2s ease, opacity 0.2s ease;
@@ -212,8 +212,9 @@ main {
     margin: 22px 0 0;
     padding-top: 14px;
     border-top: 1px solid #d7e0e9;
-    color: #6b7280;
+    color: var(--text-color);
     font-size: 0.85rem;
+    opacity: 0.55;
 }
 
 @media (max-width: 768px) {
@@ -273,6 +274,8 @@ body.dark-mode .theme-toggle {
     border-radius: 6px;
     border: 1px solid #d1d5db;
     font-size: 14px;
+    background-color: var(--card-bg);
+    color: var(--text-color);
 }
 
 #taskInput:focus {
@@ -347,4 +350,45 @@ body.dark-mode .theme-toggle {
 
 #taskList li button.delete-btn {
     margin-left: 12px;
+}
+.task-filters {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.filter-btn {
+    padding: 7px 18px;
+    border: 1.5px solid #d1d5db;
+    background-color: transparent;
+    color: var(--text-color);
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.filter-btn:hover {
+    border-color: #2563eb;
+    color: #2563eb;
+}
+
+.filter-btn.active {
+    background-color: #2563eb;
+    border-color: #2563eb;
+    color: #ffffff;
+}
+
+.empty-msg {
+    display: none;
+    text-align: center;
+    padding: 28px 0;
+    color: var(--text-color);
+    opacity: 0.45;
+    font-size: 14px;
+}
+
+#taskList li.hidden {
+    display: none;
 }
