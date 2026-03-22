@@ -392,3 +392,97 @@ body.dark-mode .theme-toggle {
 #taskList li.hidden {
     display: none;
 }
+
+@keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+#taskList li {
+    animation: fadeSlideIn 0.25s ease;
+}
+
+/* Smooth hide for filter */
+#taskList li.hidden {
+    display: none;
+}
+
+/* Input focus glow */
+#taskInput:focus {
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* Add button subtle scale */
+#addTaskBtn {
+    transition: transform 0.15s ease, background-color 0.2s ease;
+}
+
+#addTaskBtn:active {
+    transform: scale(0.97);
+}
+
+/* Delete button scale */
+.delete-btn {
+    transition: transform 0.15s ease, background-color 0.2s ease;
+}
+
+.delete-btn:active {
+    transform: scale(0.95);
+}
+
+/* Filter button transition already set, add active scale */
+.filter-btn:active {
+    transform: scale(0.96);
+}
+    /* Timer Section */
+.timer-section {
+    margin-top: 60px;
+    text-align: center;
+}
+
+.timer-section h2 {
+    margin-bottom: 20px;
+}
+
+.timer-display {
+    font-size: 72px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--text-color);
+    margin-bottom: 24px;
+}
+
+.timer-controls {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.timer-controls button {
+    padding: 10px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-family: 'Sora', sans-serif;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.timer-controls button:active {
+    transform: scale(0.97);
+}
+
+#startBtn { background-color: #10b981; color: white; }
+#startBtn:hover { background-color: #059669; }
+
+#pauseBtn { background-color: #f59e0b; color: white; }
+#pauseBtn:hover { background-color: #d97706; }
+
+#resetBtn { background-color: #6b7280; color: white; }
+#resetBtn:hover { background-color: #4b5563; }
+
+.timer-controls button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+}

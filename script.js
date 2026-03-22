@@ -155,3 +155,63 @@ filterBtns.forEach(btn => {
         applyFilter(activeFilter);
     });
 });
+
+/* ─── DAY 16: BASIC COUNTDOWN TIMER ─── */
+
+const timerDisplay = document.getElementById("timerDisplay");
+const startBtn     = document.getElementById("startBtn");
+const pauseBtn     = document.getElementById("pauseBtn");
+const resetBtn     = document.getElementById("resetBtn");
+
+const DEFAULT_TIME = 25 * 60; // 25 minutes in seconds
+let totalSeconds   = DEFAULT_TIME;
+let timerInterval  = null;
+let isRunning      = false;
+
+function formatTime(seconds) {
+    const m = String(Math.floor(seconds / 60)).padStart(2, "0");
+    const s = String(seconds % 60).padStart(2, "0");
+    return `${m}:${s}`;
+}
+
+function updateDisplay() {
+    timerDisplay.textContent = formatTime(totalSeconds);
+}
+
+startBtn.addEventListener("click", () => {
+    if (isRunning) return;
+    isRunning = true;
+    startBtn.disabled = true;
+    pauseBtn.disabled = false;
+
+    timerInterval = setInterval(() => {
+        if (totalSeconds <= 0) {
+            clearInterval(timerInterval);
+            isRunning = false;
+            startBtn.disabled = false;
+            pauseBtn.disabled = true;
+            timerDisplay.textContent = "00:00";
+            return;
+        }
+        totalSeconds--;
+        updateDisplay();
+    }, 1000);
+});
+
+pauseBtn.addEventListener("click", () => {
+    clearInterval(timerInterval);
+    isRunning = false;
+    startBtn.disabled = false;
+    pauseBtn.disabled = true;
+});
+
+resetBtn.addEventListener("click", () => {
+    clearInterval(timerInterval);
+    isRunning = false;
+    totalSeconds = DEFAULT_TIME;
+    startBtn.disabled = false;
+    pauseBtn.disabled = true;
+    updateDisplay();
+});
+
+updateDisplay();
