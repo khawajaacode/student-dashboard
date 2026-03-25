@@ -486,3 +486,64 @@ body.dark-mode .theme-toggle {
     cursor: not-allowed;
     transform: none;
 }
+/*Pomodoro Mode Buttons */
+.timer-modes {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.mode-btn {
+    padding: 7px 18px;
+    border: 1.5px solid #d1d5db;
+    background-color: transparent;
+    color: var(--text-color);
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 13px;
+    font-family: 'Sora', sans-serif;
+    font-weight: 500;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.mode-btn:hover {
+    border-color: #10b981;
+    color: #10b981;
+}
+
+.mode-btn.active {
+    background-color: #10b981;
+    border-color: #10b981;
+    color: white;
+}
+.timer-modes {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.mode-btn {
+    padding: 7px 18px;
+    border: 1.5px solid #d1d5db;
+    background-color: transparent;
+    color: var(--text-color);
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 13px;
+    font-family: 'Sora', sans-serif;
+    font-weight: 500;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.mode-btn:hover {
+    border-color: #10b981;
+    color: #10b981;
+}
+
+.mode-btn.active {
+    background-color: #10b981;
+    border-color: #10b981;
+    color: white;
+}

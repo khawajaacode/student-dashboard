@@ -1,4 +1,4 @@
-// script.js
+
 console.log("Student Dashboard Loaded");
 
 const toggleBtn = document.getElementById("themeToggle");
@@ -156,14 +156,30 @@ filterBtns.forEach(btn => {
     });
 });
 
-/* ─── DAY 16: BASIC COUNTDOWN TIMER ─── */
+
 
 const timerDisplay = document.getElementById("timerDisplay");
 const startBtn     = document.getElementById("startBtn");
 const pauseBtn     = document.getElementById("pauseBtn");
 const resetBtn     = document.getElementById("resetBtn");
 
-const DEFAULT_TIME = 25 * 60; // 25 minutes in seconds
+const DEFAULT_TIME = 1500;
+const modeBtns = document.querySelectorAll(".mode-btn");
+
+modeBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+        modeBtns.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        clearInterval(timerInterval);
+        isRunning = false;
+        startBtn.disabled = false;
+        pauseBtn.disabled = true;
+
+        totalSeconds = parseInt(btn.dataset.time);
+        updateDisplay();
+    });
+});
 let totalSeconds   = DEFAULT_TIME;
 let timerInterval  = null;
 let isRunning      = false;
