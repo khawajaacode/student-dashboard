@@ -206,6 +206,7 @@ startBtn.addEventListener("click", () => {
             isRunning = false;
             startBtn.disabled = false;
             pauseBtn.disabled = true;
+            playAlertSound();
             timerDisplay.textContent = "00:00";
             return;
         }
@@ -231,3 +232,21 @@ resetBtn.addEventListener("click", () => {
 });
 
 updateDisplay();
+
+
+function playAlertSound() {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const oscillator = ctx.createOscillator();
+    const gainNode = ctx.createGain();
+
+    oscillator.connect(gainNode);
+    gainNode.connect(ctx.destination);
+
+    oscillator.type = "sine";
+    oscillator.frequency.setValueAtTime(880, ctx.currentTime);
+    gainNode.gain.setValueAtTime(1, ctx.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 1.5);
+
+    oscillator.start(ctx.currentTime);
+    oscillator.stop(ctx.currentTime + 1.5);
+}
