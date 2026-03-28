@@ -197,6 +197,7 @@ function updateDisplay() {
 startBtn.addEventListener("click", () => {
     if (isRunning) return;
     isRunning = true;
+    timerDisplay.classList.add("running");
     startBtn.disabled = true;
     pauseBtn.disabled = false;
 
@@ -204,6 +205,7 @@ startBtn.addEventListener("click", () => {
         if (totalSeconds <= 0) {
             clearInterval(timerInterval);
             isRunning = false;
+            timerDisplay.classList.remove("running");
             startBtn.disabled = false;
             pauseBtn.disabled = true;
             playAlertSound();
@@ -218,6 +220,7 @@ startBtn.addEventListener("click", () => {
 pauseBtn.addEventListener("click", () => {
     clearInterval(timerInterval);
     isRunning = false;
+    timerDisplay.classList.remove("running");
     startBtn.disabled = false;
     pauseBtn.disabled = true;
 });
@@ -225,6 +228,7 @@ pauseBtn.addEventListener("click", () => {
 resetBtn.addEventListener("click", () => {
     clearInterval(timerInterval);
     isRunning = false;
+    timerDisplay.classList.remove("running");
     totalSeconds = DEFAULT_TIME;
     startBtn.disabled = false;
     pauseBtn.disabled = true;

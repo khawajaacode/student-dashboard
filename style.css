@@ -445,11 +445,17 @@ body.dark-mode .theme-toggle {
 }
 
 .timer-display {
-    font-size: 72px;
+    font-size: 80px;
     font-weight: 600;
-    letter-spacing: 2px;
+    letter-spacing: 4px;
     color: var(--text-color);
     margin-bottom: 24px;
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    padding: 24px 48px;
+    display: inline-block;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    transition: color 0.3s ease;
 }
 
 .timer-controls {
@@ -546,4 +552,29 @@ body.dark-mode .theme-toggle {
     background-color: #10b981;
     border-color: #10b981;
     color: white;
+}
+
+
+.timer-section {
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    max-width: 480px;
+    margin: 60px auto 0;
+}
+
+.timer-section h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+/* Pulse animation when timer is running */
+.timer-display.running {
+    animation: pulse 1s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+    from { opacity: 1; }
+    to   { opacity: 0.75; }
 }
