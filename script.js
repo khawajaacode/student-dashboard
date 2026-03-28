@@ -210,6 +210,7 @@ startBtn.addEventListener("click", () => {
             pauseBtn.disabled = true;
             playAlertSound();
             timerDisplay.textContent = "00:00";
+            saveSession();
             return;
         }
         totalSeconds--;
@@ -254,3 +255,52 @@ function playAlertSound() {
     oscillator.start(ctx.currentTime);
     oscillator.stop(ctx.currentTime + 1.5);
 }
+
+
+
+const historyList     = document.getElementById("historyList");
+const historyEmpty    = document.getElementById("historyEmpty");
+const clearHistoryBtn = document.getElementById("clearHistoryBtn");
+
+function getActiveModeName() {
+    const activeMode = document.querySelector(".mode-btn.active");
+    return activeMode ? activeMode.textContent : "Pomodoro";
+}
+
+function saveSession() {
+    const sessions = JSON.parse(localStorage.getItem("timerHistory")) || [];
+    const session  = {
+        mode: getActiveModeName(),
+        date: new Date().toLocaleString()
+    };
+    sessions.unshift(session); // newest first
+    localStorage.setItem("timerHistory", JSON.stringify(sessions));
+    renderHistory();
+}
+
+function renderHistory() {
+    const sessions = JSON.parse(localStorage.getItem("timerHistory")) || [];
+    historyList.innerHTML = "";
+
+    if (sessions.length === 0) {
+        historyEmpty.style.display = "block";
+        clearHistoryBtn.style.display = "none";
+        return;
+    }
+
+    historyEmpty.style.display = "none";
+    clearHistoryBtn.style.display = "inline-block";
+
+    sessions.forEach(s => {
+        const li = document.createElement("li");
+        li.textContent = `${s.mode} — ${s.date}`;
+        historyList.appendChild(li);
+    });
+}
+
+clearHistoryBtn.addEventListener("click", () => {
+    localStorage.removeItem("timerHistory");
+    renderHistory();
+});
+
+renderHistory();
