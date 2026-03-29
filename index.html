@@ -71,7 +71,7 @@
 
         <ul id="taskList"></ul>
     </section>
-    <section class="timer-section">
+<section class="timer-section">
     <h2>⏱️ Study Timer</h2>
     <div class="timer-modes">
         <button class="mode-btn active" data-time="1500">Pomodoro</button>
@@ -93,6 +93,24 @@
     </div>
 </section>
 
+<section class="notes-section">
+    <h2>📝 Notes</h2>
+    <div class="note-input-area">
+        <input
+            type="text"
+            id="noteTitle"
+            placeholder="Note title..."
+        />
+        <textarea
+            id="noteBody"
+            placeholder="Write your note here..."
+            rows="3"
+        ></textarea>
+        <button id="addNoteBtn">Add Note</button>
+    </div>
+    <div id="notesList"></div>
+    <p id="notesEmpty" class="empty-msg">No notes yet. Add one above!</p>
+</section>
     </main>
 
     <footer class="site-footer">

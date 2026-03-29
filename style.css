@@ -625,3 +625,99 @@ body.dark-mode .theme-toggle {
 #clearHistoryBtn:hover {
     background-color: #dc2626;
 }
+
+
+/* Notes Section */
+.notes-section {
+    margin-top: 60px;
+    text-align: left;
+}
+
+.notes-section h2 {
+    margin-bottom: 16px;
+}
+
+.note-input-area {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#noteTitle {
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+    font-family: 'Sora', sans-serif;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+#noteTitle:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+#noteBody {
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+    font-family: 'Sora', sans-serif;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    resize: vertical;
+}
+
+#noteBody:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+#addNoteBtn {
+    align-self: flex-start;
+    padding: 10px 18px;
+    border: none;
+    background-color: #2563eb;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: 'Sora', sans-serif;
+    transition: background-color 0.2s ease;
+}
+
+#addNoteBtn:hover {
+    background-color: #1d4ed8;
+}
+
+#notesList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+}
+
+.note-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+    border-left: 4px solid #3b82f6;
+    animation: fadeSlideIn 0.25s ease;
+}
+
+.note-card h4 {
+    margin: 0 0 8px;
+    font-size: 15px;
+}
+
+.note-card p {
+    margin: 0;
+    font-size: 13px;
+    opacity: 0.7;
+    line-height: 1.5;
+    white-space: pre-wrap;
+}

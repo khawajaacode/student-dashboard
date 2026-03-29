@@ -304,3 +304,47 @@ clearHistoryBtn.addEventListener("click", () => {
 });
 
 renderHistory();
+
+
+/* NOTES SECTION */
+
+const noteTitle  = document.getElementById("noteTitle");
+const noteBody   = document.getElementById("noteBody");
+const addNoteBtn = document.getElementById("addNoteBtn");
+const notesList  = document.getElementById("notesList");
+const notesEmpty = document.getElementById("notesEmpty");
+
+function updateNotesEmpty() {
+    notesEmpty.style.display = notesList.children.length === 0 ? "block" : "none";
+}
+
+function createNote(title, body) {
+    const card = document.createElement("div");
+    card.classList.add("note-card");
+
+    const h4 = document.createElement("h4");
+    h4.textContent = title;
+
+    const p = document.createElement("p");
+    p.textContent = body;
+
+    card.appendChild(h4);
+    card.appendChild(p);
+
+    notesList.appendChild(card);
+    updateNotesEmpty();
+}
+
+addNoteBtn.addEventListener("click", () => {
+    const title = noteTitle.value.trim();
+    const body  = noteBody.value.trim();
+    if (title === "" && body === "") return;
+
+    createNote(title || "Untitled", body);
+
+    noteTitle.value = "";
+    noteBody.value  = "";
+    noteTitle.focus();
+});
+
+updateNotesEmpty();
